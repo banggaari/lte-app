@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SatuanKerja;
+use App\Models\Drone;
 use Illuminate\Http\Request;
-use App\Exports\SatuanKerjaExport;
-use App\Imports\SatuanKerjaImport;
+use App\Exports\DroneExport;
+use App\Imports\DroneImport;
 use Maatwebsite\Excel\Facades\Excel;
 
-class SatuanKerjaController extends Controller
+class DroneController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,13 +17,15 @@ class SatuanKerjaController extends Controller
      */
     public function index()
     {
-        $satuanKerjas = SatuanKerja::All();
+        $drones = Drone::All();
         $heads = [
-            'Name',
-            'Description',
+            'Jenis Pesawat',
+            'Merk',
+            'Tanda Pengenal',
+            'Keterangan',
             ['label' => 'Actions', 'no-export' => true],
         ];
-        return view('satuankerja.index', compact(['satuanKerjas','heads']));
+        return view('drone.index', compact(['drones','heads']));
     }
 
     /**
@@ -33,7 +35,7 @@ class SatuanKerjaController extends Controller
      */
     public function create()
     {
-        return view('satuankerja.create');
+        return view('drone.create');
     }
 
     /**
@@ -45,23 +47,23 @@ class SatuanKerjaController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'name' => 'required|unique:satuan_kerjas,name',
-            'description' => 'required',
+            'jenis_pesawat' => 'required',
+            'merk' => 'required',
         ]);
+        print_r($request->jenis_pesawat);
+        Drone::create($request->all());
     
-        SatuanKerja::create($request->all());
-    
-        return redirect()->route('satuankerja.index')
-                        ->with('message','Satuan Kerja created successfully.');
+        return redirect()->route('drones.index')
+                        ->with('message','Drone created successfully.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\SatuanKerja  $satuanKerja
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(SatuanKerja $satuanKerja)
+    public function show($id)
     {
         //
     }
@@ -69,27 +71,27 @@ class SatuanKerjaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\SatuanKerja  $satuanKerja
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $satuanKerja = SatuanKerja::find($id);
-        return view('satuankerja.edit',compact('satuanKerja'));
+        $drone = Drone::find($id);
+        return view('drone.edit',compact('drone'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\SatuanKerja  $satuanKerja
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         request()->validate([
-            'name' => 'required',
-            'description' => 'required',
+            'jenis_pesawat' => 'required',
+            'merk' => 'required',
         ]);
         $satuanKerja = SatuanKerja::find($id);
         $satuanKerja->update($request->all());
@@ -100,16 +102,16 @@ class SatuanKerjaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\SatuanKerja  $satuanKerja
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        SatuanKerja::find($id)->delete();
-        return redirect()->route('satuankerja.index')
-                        ->with('message','Satuan Kerja deleted successfully');
+        Drone::find($id)->delete();
+        return redirect()->route('drones.index')
+                        ->with('message','Drone deleted successfully');
     }
-    /**
+      /**
     * @return \Illuminate\Support\Collection
     */
     public function importExportView()
@@ -121,7 +123,7 @@ class SatuanKerjaController extends Controller
     */
     public function export() 
     {
-        return Excel::download(new SatuanKerjaExport, 'satuankerja.xlsx');
+        return Excel::download(new DroneExport, 'Drones.xlsx');
     }
      
     /**
@@ -129,7 +131,7 @@ class SatuanKerjaController extends Controller
     */
     public function import() 
     {
-        Excel::import(new SatuanKerjaImport,request()->file('file'));
+        Excel::import(new DroneImport,request()->file('file'));
              
         return back();
     }

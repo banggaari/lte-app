@@ -31,7 +31,7 @@ return [
     */
 
     'use_ico_only' => false,
-    'use_full_favicon' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'use_full_favicon' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -242,6 +242,11 @@ return [
             'text' => 'Satuan Kerja',
             'icon'    => 'fas fa-fw fa-landmark',
             'url'  => '/satuankerja',
+        ],
+        [
+            'text' => 'Drone',
+            'icon'    => 'fas fa-fw fa-dna',
+            'url'  => '/drones',
         ],
         ['header' => 'account_settings'],
         [

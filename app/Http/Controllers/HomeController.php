@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\SatuanKerja;
 
 class HomeController extends Controller
 {
@@ -23,14 +24,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $config = [
-            "placeholder" => "Select multiple options...",
-            "allowClear" => true,
+        $satuanKerjas = SatuanKerja::All();
+        $heads = [
+            'Name',
+            'Description',
+            ['label' => 'Actions', 'no-export' => true],
         ];
-        return view('home', compact(['config']));
+        return view('home', compact('heads','satuanKerjas'));
     }
     public function approval()
     {
         return view('auth/approval');
     }
+
 }

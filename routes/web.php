@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DroneController;
 use App\Http\Controllers\SatuanKerjaController;
 
 /*
@@ -27,6 +28,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/approval', [HomeController::class, 'approval'])->name('approval');
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+    //Drone Route
+    Route::resource('drones', DroneController::class);
+    Route::get('exportDrone', [DroneController::class, 'export'])->name('exportDrone');
+    Route::post('importDrone', [DroneController::class, 'import'])->name('importDrone');
+    
     // User Route
     Route::resource('roles', RoleController::class);
 
