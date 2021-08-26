@@ -20,7 +20,7 @@ class Drone extends Model
 
     public function satuan_kerjas()
     {
-        return $this->belongsTo(SatuanKerja::class);
+        return $this->belongTo(SatuanKerja::class);
     }
 
 }

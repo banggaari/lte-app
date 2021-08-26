@@ -26,8 +26,8 @@
             <x-adminlte-alert dismissable class="float-right" theme="info" title="{{ session('message') }}">
             </x-adminlte-alert>
         @endif
-        <x-adminlte-datatable id="table1" :heads="$heads">
-            @forelse ($drones as $drone)
+        <x-adminlte-datatable id="table1" :heads="$heads" with-buttons>
+            @foreach ($drones as $drone)
                 <tr>
                     <td>{{ $drone->jenis_pesawat }}</td>
                     <td>{{ $drone->merk }}</td>
@@ -47,11 +47,7 @@
                         </form>
                     </td>
                 </tr>
-            @empty
-                <tr>
-                    <td colspan="4">No Drone found.</td>
-                </tr>
-            @endforelse
+            @endforeach
         </x-adminlte-datatable>
     </x-adminlte-card>
     <x-adminlte-card>
@@ -72,4 +68,3 @@
         </form>
     </x-adminlte-card>
 @stop
-@section('plugins.BsCustomFileInput', true)

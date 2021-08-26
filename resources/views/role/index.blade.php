@@ -28,7 +28,7 @@
             <x-adminlte-alert dismissable class="float-right" theme="info" title="{{ session('message') }}">
             </x-adminlte-alert>
         @endif
-        <x-adminlte-datatable id="table1" :heads="$heads">
+        <x-adminlte-datatable id="table1" :heads="$heads" with-buttons>
             @foreach ($roles as $role)
                 <tr>
                     <td>{{ $role->name }}</td>

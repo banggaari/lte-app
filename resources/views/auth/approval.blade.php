@@ -1,25 +1,19 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Approval')
 
 @section('content_header')
-    <h1>Dashboard</h1>
 @stop
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Waiting for Approval</div>
 
-                    <div class="card-body">
-                        Your account is waiting for our administrator approval.
-                        <br />
-                        Please check back later.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <x-adminlte-card theme="lime" theme-mode="outline" class="mt-3">
+        <center>
+        <label> Waiting for Approval </label>
+        <br />
+        <label>  Your account is waiting for our administrator approval.</label>
+        <br />
+        <label> Please check back later.</label>
+    </center>
+    </x-adminlte-card>
 @stop

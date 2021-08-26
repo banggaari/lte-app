@@ -93,9 +93,9 @@ class DroneController extends Controller
             'jenis_pesawat' => 'required',
             'merk' => 'required',
         ]);
-        $satuanKerja = SatuanKerja::find($id);
-        $satuanKerja->update($request->all());
-        return redirect()->route('satuankerja.index')
+        $drone = Drone::find($id);
+        $drone->update($request->all());
+        return redirect()->route('drones.index')
                         ->with('message','Satuan Kerja Updated successfully');
     }
 

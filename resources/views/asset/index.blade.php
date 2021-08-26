@@ -1,18 +1,18 @@
 @extends('adminlte::page')
 
-@section('title', 'User Approve')
+@section('title', 'Satuan Kerja')
 
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Users List to Approve</h1>
+                    <h1 class="m-0">Satuan Kerja</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/users">Users</a></li>
-                        <li class="breadcrumb-item active">Users List to Approve</li>
+                        <li class="breadcrumb-item"><a href="/assets">Satuan Kerja</a></li>
+                        <li class="breadcrumb-item active">Satuan Kerja</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -24,22 +24,15 @@
             </x-adminlte-alert>
         @endif
         <x-adminlte-datatable id="table1" :heads="$heads" with-buttons>
-            @forelse ($users as $user)
+            @foreach ($satuanKerjas as $satuanKerja)
                 <tr>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ $user->created_at }}</td>
+                    <td>{{ $satuanKerja->name }}</td>
+                    <td>{{ $satuanKerja->description }}</td>
                     <td>
-                        <a href="{{ url('userapprove/approve/' . $user->id) }}" class="btn btn-primary btn-sm">Approve</a>
-                        <a href="{{ url('userapprove/notapprove/' . $user->id) }}" class="btn btn-danger btn-sm">Not
-                            Approve</a>
+                        <a class="btn btn-primary btn-sm" href="{{ route('assets.edit', $satuanKerja->id) }}">View</a>
                     </td>
                 </tr>
-            @empty
-                <tr>
-                    <td colspan="4">No users found.</td>
-                </tr>
-            @endforelse
+            @endforeach
         </x-adminlte-datatable>
     </x-adminlte-card>
 @stop

@@ -20,81 +20,99 @@ class RolesAndPermissionsSeeder extends Seeder
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         // USER MODEL
-        $userPermission1 = Permission::create(['name' => 'create-user', 'description' => 'create user']);
-        $userPermission2 = Permission::create(['name' => 'read-user', 'description' => 'read user']);
-        $userPermission3 = Permission::create(['name' => 'update-user', 'description' => 'update user']);
-        $userPermission4 = Permission::create(['name' => 'delete-user', 'description' => 'delete User']);
+        $userPermissionCreate = Permission::create(['name' => 'create-user', 'description' => 'create user']);
+        $userPermissionRead = Permission::create(['name' => 'read-user', 'description' => 'read user']);
+        $userPermissionUpdate = Permission::create(['name' => 'update-user', 'description' => 'update user']);
+        $userPermissionDelete = Permission::create(['name' => 'delete-user', 'description' => 'delete User']);
 
         // ROLE MODEL
-        $rolePermission1 = Permission::create(['name' => 'create-role', 'description' => 'create role']);
-        $rolePermission2 = Permission::create(['name' => 'read-role', 'description' => 'read role']);
-        $rolePermission3 = Permission::create(['name' => 'update-role', 'description' => 'update role']);
-        $rolePermission4 = Permission::create(['name' => 'delete-role', 'description' => 'delete role']);
+        $rolePermissionCreate = Permission::create(['name' => 'create-role', 'description' => 'create role']);
+        $rolePermissionRead = Permission::create(['name' => 'read-role', 'description' => 'read role']);
+        $rolePermissionUpdate= Permission::create(['name' => 'update-role', 'description' => 'update role']);
+        $rolePermissionDelete = Permission::create(['name' => 'delete-role', 'description' => 'delete role']);
 
-        // PERMISSION MODEL
-        $permission1 = Permission::create(['name' => 'create-permission', 'description' => 'create permission']);
-        $permission2 = Permission::create(['name' => 'read-permission', 'description' => 'read permission']);
-        $permission3 = Permission::create(['name' => 'update-permission', 'description' => 'update permission']);
-        $permission4 = Permission::create(['name' => 'delete-permission', 'description' => 'delete permission']);
+        // Drone MODEL
+        $dronePermissionCreate = Permission::create(['name' => 'create-drone', 'description' => 'create drone']);
+        $dronePermissionRead = Permission::create(['name' => 'read-drone', 'description' => 'read drone']);
+        $dronePermissionUpdate = Permission::create(['name' => 'update-drone', 'description' => 'update drone']);
+        $dronePermissionDelete = Permission::create(['name' => 'delete-drone', 'description' => 'delete drone']);
 
-        // ADMINS
-        $adminPermission1 = Permission::create(['name' => 'read-admin', 'description' => 'read admin']);
-        $adminPermission2 = Permission::create(['name' => 'update-admin', 'description' => 'update admin']);
+        // Satuan Kerja MODEL
+        $satuanKerjaPermissionCreate = Permission::create(['name' => 'create-satuanKerja', 'description' => 'create Satuan Kerja']);
+        $satuanKerjaPermissionRead = Permission::create(['name' => 'read-satuanKerja', 'description' => 'read Satuan Kerja']);
+        $satuanKerjaPermissionUpdate = Permission::create(['name' => 'update-satuanKerja', 'description' => 'update Satuan Kerja']);
+        $satuanKerjaPermissionDelete = Permission::create(['name' => 'delete-satuanKerja', 'description' => 'delete Satuan Kerja']);
 
-        // Misc
-        $miscPermission = Permission::create(['name' => 'N/A', 'description' => 'N/A']);
+        // Asset MODEL
+        $assetPermissionCreate = Permission::create(['name' => 'create-asset', 'description' => 'create asset']);
+        $assetPermissionRead = Permission::create(['name' => 'read-asset', 'description' => 'read asset']);
+        $assetPermissionUpdate = Permission::create(['name' => 'update-asset', 'description' => 'update asset']);
+        $assetPermissionDelete = Permission::create(['name' => 'delete-asset', 'description' => 'delete asset']);
+        
 
         $superAdminRole = Role::create(['name' => 'super-admin']);
         $adminRole = Role::create(['name' => 'admin']);
-        $operatorRole = Role::create(['name' => 'operator']);
-        $userRole = Role::create(['name' => 'user']);
 
         $superAdminRole->syncPermissions([
-            $userPermission1,
-            $userPermission2,
-            $userPermission3,
-            $userPermission4,
-            $rolePermission1,
-            $rolePermission2,
-            $rolePermission3,
-            $rolePermission4,
-            $permission1,
-            $permission2,
-            $permission3,
-            $permission4,
-            $adminPermission1,
-            $adminPermission2,
-            $userPermission1,
+            $userPermissionCreate,
+            $userPermissionRead,
+            $userPermissionUpdate,
+            $userPermissionDelete,
+
+            // ROLE MODEL
+            $rolePermissionCreate,
+            $rolePermissionRead,
+            $rolePermissionUpdate,
+            $rolePermissionDelete,
+
+            // Drone MODEL
+            $dronePermissionCreate,
+            $dronePermissionRead,
+            $dronePermissionUpdate,
+            $dronePermissionDelete,
+
+            // Satuan Kerja MODEL
+            $satuanKerjaPermissionCreate,
+            $satuanKerjaPermissionRead,
+            $satuanKerjaPermissionUpdate,
+            $satuanKerjaPermissionDelete,
+
+            // Asset MODEL
+            $assetPermissionCreate,
+            $assetPermissionRead,
+            $assetPermissionUpdate,
+            $assetPermissionDelete,
         ]);
 
          $adminRole->syncPermissions([
-            $userPermission1,
-            $userPermission2,
-            $userPermission3,
-            $userPermission4,
-            $rolePermission1,
-            $rolePermission2,
-            $rolePermission3,
-            $rolePermission4,
-            $permission1,
-            $permission2,
-            $permission3,
-            $permission4,
-            $adminPermission1,
-            $adminPermission2,
-            $userPermission1,
-        ]);
+            $userPermissionCreate,
+            $userPermissionRead,
+            $userPermissionUpdate,
+            $userPermissionDelete,
 
-        $operatorRole->syncPermissions([
-            $userPermission2,
-            $rolePermission2,
-            $permission2,
-            $adminPermission1,
-        ]);
+            // ROLE MODEL
+            $rolePermissionCreate,
+            $rolePermissionRead,
+            $rolePermissionUpdate,
+            $rolePermissionDelete,
 
+            // Drone MODEL
+            $dronePermissionCreate,
+            $dronePermissionRead,
+            $dronePermissionUpdate,
+            $dronePermissionDelete,
 
-        $userRole->syncPermissions([
-            $miscPermission,
+            // Satuan Kerja MODEL
+            $satuanKerjaPermissionCreate,
+            $satuanKerjaPermissionRead,
+            $satuanKerjaPermissionUpdate,
+            $satuanKerjaPermissionDelete,
+
+            // Asset MODEL
+            $assetPermissionCreate,
+            $assetPermissionRead,
+            $assetPermissionUpdate,
+            $assetPermissionDelete,
         ]);
 
         $superAdmin = User::create([
@@ -136,50 +154,65 @@ class RolesAndPermissionsSeeder extends Seeder
         ]);
 
         $superAdmin->syncRoles([$superAdminRole])->syncPermissions([
-            $userPermission1,
-            $userPermission2,
-            $userPermission3,
-            $userPermission4,
-            $rolePermission1,
-            $rolePermission2,
-            $rolePermission3,
-            $rolePermission4,
-            $permission1,
-            $permission2,
-            $permission3,
-            $permission4,
-            $adminPermission1,
-            $adminPermission2,
-            $userPermission1,
+            $userPermissionCreate,
+            $userPermissionRead,
+            $userPermissionUpdate,
+            $userPermissionDelete,
+
+            // ROLE MODEL
+            $rolePermissionCreate,
+            $rolePermissionRead,
+            $rolePermissionUpdate,
+            $rolePermissionDelete,
+
+            // Drone MODEL
+            $dronePermissionCreate,
+            $dronePermissionRead,
+            $dronePermissionUpdate,
+            $dronePermissionDelete,
+
+            // Satuan Kerja MODEL
+            $satuanKerjaPermissionCreate,
+            $satuanKerjaPermissionRead,
+            $satuanKerjaPermissionUpdate,
+            $satuanKerjaPermissionDelete,
+
+            // Asset MODEL
+            $assetPermissionCreate,
+            $assetPermissionRead,
+            $assetPermissionUpdate,
+            $assetPermissionDelete,
         ]);
 
         $admin->syncRoles([$adminRole])->syncPermissions([
-            $userPermission1,
-            $userPermission2,
-            $userPermission3,
-            $userPermission4,
-            $rolePermission1,
-            $rolePermission2,
-            $rolePermission3,
-            $rolePermission4,
-            $permission1,
-            $permission2,
-            $permission3,
-            $permission4,
-            $adminPermission1,
-            $adminPermission2,
-            $userPermission1,
-        ]);
+            $userPermissionCreate,
+            $userPermissionRead,
+            $userPermissionUpdate,
+            $userPermissionDelete,
 
-        $operator->syncRoles($operatorRole)->syncPermissions([
-            $userPermission2,
-            $rolePermission2,
-            $adminPermission1,
-        ]);
+            // ROLE MODEL
+            $rolePermissionCreate,
+            $rolePermissionRead,
+            $rolePermissionUpdate,
+            $rolePermissionDelete,
 
+            // Drone MODEL
+            $dronePermissionCreate,
+            $dronePermissionRead,
+            $dronePermissionUpdate,
+            $dronePermissionDelete,
 
-        $user->syncRoles($userRole)->syncPermissions([
-            $miscPermission,
+            // Satuan Kerja MODEL
+            $satuanKerjaPermissionCreate,
+            $satuanKerjaPermissionRead,
+            $satuanKerjaPermissionUpdate,
+            $satuanKerjaPermissionDelete,
+
+            // Asset MODEL
+            $assetPermissionCreate,
+            $assetPermissionRead,
+            $assetPermissionUpdate,
+            $assetPermissionDelete,
         ]);
     }
 }

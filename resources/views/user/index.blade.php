@@ -23,8 +23,8 @@
             <x-adminlte-alert dismissable class="float-right" theme="info" title="{{ session('message') }}">
             </x-adminlte-alert>
         @endif
-        <x-adminlte-datatable id="table1" :heads="$heads">
-            @forelse ($users as $user)
+        <x-adminlte-datatable id="table1" :heads="$heads" with-buttons>
+            @foreach ($users as $user)
                 <tr>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
@@ -52,11 +52,7 @@
                         </form>
                     </td>
                 </tr>
-            @empty
-                <tr>
-                    <td colspan="4">No users found.</td>
-                </tr>
-            @endforelse
+            @endforeach
         </x-adminlte-datatable>
     </x-adminlte-card>
 @stop
