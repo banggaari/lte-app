@@ -26,12 +26,10 @@
         <form action="{{ route('users.update', $user->id) }}" method="POST">
             @csrf
             @method('PUT')
-            <label>Name</label>
-            <span style="color: red">*</span>
+            <label>Name *</label>
             <x-adminlte-input name="name" value="{{ $user->name }}" class="form-control" id=name placeholder="User Name">
             </x-adminlte-input>
-            <label>Email</label>
-            <span style="color: red">*</span>
+            <label>Email *</label>
             <x-adminlte-input name="email" value="{{ $user->email }}" class="form-control" id=email placeholder="Email">
             </x-adminlte-input>
             <label>Password</label>

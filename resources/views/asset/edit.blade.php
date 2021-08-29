@@ -19,13 +19,11 @@
         </div><!-- /.container-fluid -->
     </div>
     <x-adminlte-card theme="lime" theme-mode="outline">
-        <label>Nama</label>
-        <span style="color: red">*</span>
+        <label>Nama *</label>
         <x-adminlte-input name="name" disabled value="{{ $satuanKerja->name }}" class="form-control" id=name
             placeholder="Nama Satuan Kerja">
         </x-adminlte-input>
-        <label>Description</label>
-        <span style="color: red">*</span>
+        <label>Description *</label>
         <x-adminlte-textarea disabled name="description" class="form-control" id=description placeholder="Description">
             {{ $satuanKerja->description }}
         </x-adminlte-textarea>

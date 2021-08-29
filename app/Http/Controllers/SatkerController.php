@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SatuanKerja;
+use App\Models\Satker;
 use Illuminate\Http\Request;
 use App\Exports\SatuanKerjaExport;
 use App\Imports\SatuanKerjaImport;
 use Maatwebsite\Excel\Facades\Excel;
 
-class SatuanKerjaController extends Controller
+class SatkerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,13 +17,13 @@ class SatuanKerjaController extends Controller
      */
     public function index()
     {
-        $satuanKerjas = SatuanKerja::All();
+        $satuanKerjas = Satker::All();
         $heads = [
             'Name',
             'Description',
             ['label' => 'Actions', 'no-export' => true],
         ];
-        return view('satuankerja.index', compact(['satuanKerjas','heads']));
+        return view('satker.index', compact(['satuanKerjas','heads']));
     }
 
     /**
@@ -33,7 +33,7 @@ class SatuanKerjaController extends Controller
      */
     public function create()
     {
-        return view('satuankerja.create');
+        return view('satker.create');
     }
 
     /**
@@ -45,23 +45,23 @@ class SatuanKerjaController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'name' => 'required|unique:satuan_kerjas,name',
+            'name' => 'required|unique:satkers,name',
             'description' => 'required',
         ]);
     
-        SatuanKerja::create($request->all());
+        Satker::create($request->all());
     
-        return redirect()->route('satuankerja.index')
+        return redirect()->route('satkers.index')
                         ->with('message','Satuan Kerja created successfully.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\SatuanKerja  $satuanKerja
+     * @param  \App\Models\Satker  $satuanKerja
      * @return \Illuminate\Http\Response
      */
-    public function show(SatuanKerja $satuanKerja)
+    public function show(Satker $satuanKerja)
     {
         //
     }
@@ -69,20 +69,20 @@ class SatuanKerjaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\SatuanKerja  $satuanKerja
+     * @param  \App\Models\Satker  $satuanKerja
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $satuanKerja = SatuanKerja::find($id);
-        return view('satuankerja.edit',compact('satuanKerja'));
+        $satuanKerja = Satker::find($id);
+        return view('satker.edit',compact('satuanKerja'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\SatuanKerja  $satuanKerja
+     * @param  \App\Models\Satker  $satuanKerja
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -91,22 +91,22 @@ class SatuanKerjaController extends Controller
             'name' => 'required',
             'description' => 'required',
         ]);
-        $satuanKerja = SatuanKerja::find($id);
+        $satuanKerja = Satker::find($id);
         $satuanKerja->update($request->all());
-        return redirect()->route('satuankerja.index')
+        return redirect()->route('satkers.index')
                         ->with('message','Satuan Kerja Updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\SatuanKerja  $satuanKerja
+     * @param  \App\Models\Satker  $satuanKerja
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        SatuanKerja::find($id)->delete();
-        return redirect()->route('satuankerja.index')
+        Satker::find($id)->delete();
+        return redirect()->route('satkers.index')
                         ->with('message','Satuan Kerja deleted successfully');
     }
     /**

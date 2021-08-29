@@ -50,7 +50,6 @@ class DroneController extends Controller
             'jenis_pesawat' => 'required',
             'merk' => 'required',
         ]);
-        print_r($request->jenis_pesawat);
         Drone::create($request->all());
     
         return redirect()->route('drones.index')

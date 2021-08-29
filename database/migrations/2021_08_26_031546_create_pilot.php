@@ -13,9 +13,27 @@ class CreatePilot extends Migration
      */
     public function up()
     {
-        Schema::create('pilot', function (Blueprint $table) {
+        Schema::create('pilots', function (Blueprint $table) {
             $table->id();
+            $table->integer('no_kontak');
+            $table->string('no_license')->unique();
+            $table->date('masa_berlaku');
+            $table->string('riwayat_training')->nullable();
             $table->timestamps();
+            $table->foreignId('user_id')
+                    ->nullable()
+                    ->unsignedInteger()
+                    ->references('id')
+                  ->on('users')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+            $table->foreignId('satker_id')
+                    ->nullable()
+                    ->unsignedInteger()
+                    ->references('id')
+                  ->on('satkers')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
         });
     }
 
@@ -26,6 +44,6 @@ class CreatePilot extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pilot');
+        Schema::dropIfExists('pilots');
     }
 }

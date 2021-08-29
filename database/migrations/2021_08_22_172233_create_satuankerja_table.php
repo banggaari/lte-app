@@ -13,7 +13,7 @@ class CreateSatuankerjaTable extends Migration
      */
     public function up()
     {
-        Schema::create('satuan_kerjas', function (Blueprint $table) {
+        Schema::create('satkers', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
             $table->string('description');
@@ -28,6 +28,6 @@ class CreateSatuankerjaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('satuan_kerjas');
+        Schema::dropIfExists('satkers');
     }
 }

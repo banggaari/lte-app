@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Drone;
 
-class SatuanKerja extends Model
+class Satker extends Model
 {
     use HasFactory;
-    protected $table = 'satuan_kerjas';
+    public $table = "satkers";
     /**
      * The attributes that are mass assignable.
      *
@@ -19,7 +19,11 @@ class SatuanKerja extends Model
         'name',
         'description'
     ];
-    public function drones(){
+    public function drone(){
         return $this->hasMany(Drone::class);
     }
+    public function pilot(){
+        return $this->hasOne(Pilot::class);
+    }
+
 }

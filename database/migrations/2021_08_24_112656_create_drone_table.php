@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\SatuanKerja;
+use App\Models\Satker;
 
 class CreateDroneTable extends Migration
 {
@@ -21,14 +21,13 @@ class CreateDroneTable extends Migration
             $table->string('keterangan')->nullable();
             $table->string('tanda_pengenal')->nullable();
             $table->timestamps();
-            $table->foreignId('satuan_kerja_id')
+            $table->foreignId('satker_id')
                     ->nullable()
-                    ->unsigned()
+                    ->unsignedInteger()
                     ->references('id')
-                  ->on('satuan_kerjas')
+                  ->on('satkers')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
-            
         });
     }
 
@@ -39,6 +38,6 @@ class CreateDroneTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('drone');
+        Schema::dropIfExists('drones');
     }
 }

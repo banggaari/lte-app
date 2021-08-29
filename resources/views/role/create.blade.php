@@ -22,12 +22,10 @@
         <form action="{{ route('roles.store') }}" method="POST">
             @csrf
             @method('POST')
-            <label>Name</label>
-            <span style="color: red">*</span>
+            <label>Name *</label>
             <x-adminlte-input name="name" class="form-control" id=name placeholder="Role Name">
             </x-adminlte-input>
-            <label>Guard Name</label>
-            <span style="color: red">*</span>
+            <label>Guard Name *</label>
             <x-adminlte-input name="guard_name" disabled value="Web" class="form-control" id=guard_name
                 placeholder="guard_name">
             </x-adminlte-input>

@@ -242,11 +242,16 @@ return [
             'icon'    => 'fa fa-fw fa-file-archive',
             'url'  => '/assets',
         ],
+        [
+            'text' => 'Pilot',
+            'icon'    => 'fa fa-fw fa-user-astronaut',
+            'url'  => '/pilots',
+        ],
         ['header' => 'MASTER DATA'],
         [
             'text' => 'Satuan Kerja',
             'icon'    => 'fas fa-fw fa-landmark',
-            'url'  => '/satuankerja',
+            'url'  => '/satkers',
         ],
         [
             'text' => 'Drone',
@@ -446,7 +451,26 @@ return [
                 ],
             ],
         ],
-        
+        'TempusDominusBs4' => [
+            'active' => false,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/moment/moment.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css',
+                ],
+            ],
+        ],
     ],
 
     /*

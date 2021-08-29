@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\SatuanKerja;
+use App\Models\Satker;
 
 class HomeController extends Controller
 {
@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $satuanKerjas = SatuanKerja::All();
+        $satuanKerjas = Satker::All();
         $heads = [
             'Name',
             'Description',

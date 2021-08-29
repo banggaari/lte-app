@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\SatuanKerja;
+use App\Models\Satker;
 
 class Drone extends Model
 {
@@ -16,11 +16,12 @@ class Drone extends Model
         'merk',
         'keterangan',
         'tanda_pengenal',
+        'satkers_id'
     ];
 
-    public function satuan_kerjas()
+    public function satker()
     {
-        return $this->belongTo(SatuanKerja::class);
+        return $this->belongsTo(Satker::class);
     }
 
 }

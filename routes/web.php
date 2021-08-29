@@ -6,7 +6,8 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DroneController;
 use App\Http\Controllers\AssetController;
-use App\Http\Controllers\SatuanKerjaController;
+use App\Http\Controllers\PilotController;
+use App\Http\Controllers\SatkerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,11 +36,13 @@ Route::middleware(['auth'])->group(function () {
         // User Route
     Route::resource('roles', RoleController::class);
 
+    Route::resource('pilots',PilotController::class);
+
     // Satuan Kerja Route
-    Route::resource('satuankerja', SatuanKerjaController::class);
-    Route::get('importExportViewSatuanKerja', [SatuanKerjaController::class, 'importExportView']);
-    Route::get('exportSatuanKerja', [SatuanKerjaController::class, 'export'])->name('exportSatuanKerja');
-    Route::post('importSatuanKerja', [SatuanKerjaController::class, 'import'])->name('importSatuanKerja');
+    Route::resource('satkers', SatkerController::class);
+    Route::get('importExportViewSatuanKerja', [SatkerController::class, 'importExportView']);
+    Route::get('exportSatuanKerja', [SatkerController::class, 'export'])->name('exportSatuanKerja');
+    Route::post('importSatuanKerja', [SatkerController::class, 'import'])->name('importSatuanKerja');
     //Drone Route
     Route::resource('drones', DroneController::class);
     Route::get('exportDrone', [DroneController::class, 'export'])->name('exportDrone');

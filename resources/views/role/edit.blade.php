@@ -22,12 +22,10 @@
         <form action="{{ route('roles.update', $role->id) }}" method="POST">
             @csrf
             @method('PUT')
-            <label>Name</label>
-            <span style="color: red">*</span>
+            <label>Name *</label>
             <x-adminlte-input name="name" value="{{ $role->name }}" class="form-control" id=name placeholder="User Name">
             </x-adminlte-input>
-            <label>Guard Name</label>
-            <span style="color: red">*</span>
+            <label>Guard Name *</label>
             <x-adminlte-input name="guard_name" disabled value="{{ $role->guard_name }}" class="form-control"
                 id=guard_name placeholder="guard_name">
             </x-adminlte-input>

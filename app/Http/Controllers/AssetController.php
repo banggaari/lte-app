@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\SatuanKerja;
+use App\Models\Satker;
 use App\Models\Drone;
 
 class AssetController extends Controller
@@ -15,7 +15,7 @@ class AssetController extends Controller
      */
     public function index()
     {
-        $satuanKerjas = SatuanKerja::All();
+        $satuanKerjas = Satker::All();
         $heads = [
             'Name',
             'Description',
@@ -71,9 +71,9 @@ class AssetController extends Controller
             'Keterangan',
             ['label' => 'Actions','no-export' => true],
         ];
-        $satuanKerja = SatuanKerja::find($id);
-        $drones = Drone::where('satuan_kerja_id',$id)->get();
-        $dronesModal = Drone::whereNull('satuan_kerja_id')->get();
+        $satuanKerja = Satker::find($id);
+        $drones = Drone::where('satker_id',$id)->get();
+        $dronesModal = Drone::whereNull('satker_id')->get();
         return view('asset.edit',compact('satuanKerja','heads','drones','dronesModal'));
     }
     public function addDrone($satuankerja_id,$drone_id)
@@ -85,10 +85,10 @@ class AssetController extends Controller
             'Keterangan',
             ['label' => 'Actions','no-export' => true],
         ];
-        $satuanKerja = SatuanKerja::find($satuankerja_id);
-        $drones = Drone::where('satuan_kerja_id',$satuankerja_id)->get();
-        $dronesModal = Drone::whereNull('satuan_kerja_id')->get();
-        Drone::where('id',$drone_id)->update(['satuan_kerja_id'=>$satuankerja_id]);
+        $satuanKerja = Satker::find($satuankerja_id);
+        $drones = Drone::where('satker_id',$satuankerja_id)->get();
+        $dronesModal = Drone::whereNull('satker_id')->get();
+        Drone::where('id',$drone_id)->update(['satker_id'=>$satuankerja_id]);
         return redirect()->route('assets.edit',$satuankerja_id)
                         ->with('message','From Asset, Drone Added successfully');
     }
@@ -113,7 +113,7 @@ class AssetController extends Controller
      */
     public function destroy($id)
     {
-        Drone::where('id',$id)->update(['satuan_kerja_id'=>null]);
+        Drone::where('id',$id)->update(['satker_id'=>null]);
         return redirect()->route('assets.edit',$id)
                         ->with('message','From Asset, Drone deleted successfully');
     }

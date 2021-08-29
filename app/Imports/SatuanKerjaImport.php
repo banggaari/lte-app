@@ -2,7 +2,7 @@
 
 namespace App\Imports;
 
-use App\Models\SatuanKerja;
+use App\Models\Satker;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
@@ -15,7 +15,7 @@ class SatuanKerjaImport implements ToModel, WithHeadingRow
     */
     public function model(array $row)
     {
-        return new SatuanKerja([
+        return new Satker([
             'name'     => $row['name'],
             'description'    => $row['description'],
         ]);

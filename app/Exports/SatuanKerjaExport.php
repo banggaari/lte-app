@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\Models\SatuanKerja;
+use App\Models\Satker;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
 class SatuanKerjaExport implements FromCollection
@@ -12,6 +12,6 @@ class SatuanKerjaExport implements FromCollection
     */
     public function collection()
     {
-        return SatuanKerja::all();
+        return Satker::all();
     }
 }

@@ -26,8 +26,7 @@
                 <option value="Multi Rotor">Multi Rotor</option>
                 <option value="Fixed Wing">Fixed Wing</option>
             </x-adminlte-select>
-            <label>Merk</label>
-            <span style="color: red">*</span>
+            <label>Merk *</label>
             <x-adminlte-input name="merk" class="form-control" id="merk" placeholder="Merk / Tipe Drone">
             </x-adminlte-input>
             <label>Tanda Pengenal</label>

@@ -11,7 +11,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/satuankerja">Satuan Kerja</a></li>
+                        <li class="breadcrumb-item"><a href="/satkers">Satuan Kerja</a></li>
                         <li class="breadcrumb-item active">Satuan Kerja</li>
                     </ol>
                 </div><!-- /.col -->
@@ -20,7 +20,7 @@
     </div>
     <x-adminlte-card theme="lime" theme-mode="outline">
         <div class="float-sm-left mb-2">
-            <a class="btn btn-success btn-sm" href="{{ route('satuankerja.create') }}"> Create Satuan Kerja</a>
+            <a class="btn btn-success btn-sm" href="{{ route('satkers.create') }}"> Create Satuan Kerja</a>
         </div>
         @if (session('message'))
             <x-adminlte-alert dismissable class="float-right" theme="info" title="{{ session('message') }}">
@@ -32,9 +32,9 @@
                     <td>{{ $satuanKerja->name }}</td>
                     <td>{{ $satuanKerja->description }}</td>
                     <td>
-                        <form action="{{ route('satuankerja.destroy', $satuanKerja->id) }}" method="POST">
+                        <form action="{{ route('satkers.destroy', $satuanKerja->id) }}" method="POST">
                             <a class="btn btn-primary btn-sm"
-                                href="{{ route('satuankerja.edit', $satuanKerja->id) }}">Edit</a>
+                                href="{{ route('satkers.edit', $satuanKerja->id) }}">Edit</a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm"

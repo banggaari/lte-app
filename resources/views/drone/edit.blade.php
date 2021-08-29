@@ -31,8 +31,7 @@
                     <option selected>Fixed Wing</option>
                 @endif
             </x-adminlte-select>
-            <label>Merk</label>
-            <span style="color: red">*</span>
+            <label>Merk *</label>
             <x-adminlte-input name="merk" value="{{$drone->merk}}" class="form-control" id="merk" placeholder="Merk / Tipe Drone">
             </x-adminlte-input>
             <label>Tanda Pengenal</label>
